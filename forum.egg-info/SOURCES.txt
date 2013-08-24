@@ -1,0 +1,14 @@
+README.txt
+setup.cfg
+setup.py
+forum/__init__.py
+forum/resources.py
+forum/tests.py
+forum/views.py
+forum.egg-info/PKG-INFO
+forum.egg-info/SOURCES.txt
+forum.egg-info/dependency_links.txt
+forum.egg-info/entry_points.txt
+forum.egg-info/not-zip-safe
+forum.egg-info/requires.txt
+forum.egg-info/top_level.txt
