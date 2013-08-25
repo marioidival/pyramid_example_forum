@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+ADD MESSAGE
+    {{ form.begin(request.route_url('add_message', name=topic)) }}
+    <div>
+        {{ form.errorlist("title") }}
+        {{ form.label("title") }}
+        {{ form.text('title') }}
+    </div>
+    <div>
+        {{ form.errorlist("author") }}
+        {{ form.label("author") }}
+        {{ form.text('author') }}
+    </div>
+    <div>
+        {{ form.errorlist("content") }}
+        {{ form.label("content") }}
+        {{ form.text('content') }}
+    </div>
+    {{ form.submit("","Add message") }}
+    {{ form.end() }}
+{% endblock %}

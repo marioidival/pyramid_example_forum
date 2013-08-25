@@ -5,10 +5,10 @@
     {{ form.begin(request.route_url('add_topic')) }}
     <div>
         {{ form.errorlist("name") }}
-        {{ form.label("name") }}
+        {{ form.label("topic") }}
         {{ form.text('name') }}
     </div>
-    {{ form.submit("", "Add") }}
+    {{ form.submit("", "Add Topic") }}
     {{ form.end() }}
 
 {% endblock %}

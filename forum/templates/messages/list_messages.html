@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h3>Messages of {{ topic }}</h3>
+ <a href='{{ request.route_url('add_message', name=topic) }}' class='btn'>Add
+   Message</a>
+ <hr />
+ <ul>
+ {% for message in messages %}
+   <li>{{ message.title }} - {{ message.author}}</li>
+ {% endfor %}
+ <ul>
+{% endblock %}

@@ -1,10 +1,15 @@
 {% extends 'index.html' %}
 {% block content %}
-    <div class=''>
-      <ul>
-      {% for topic in topics %}
-        <li>{{ topic.name }}</li>
-      {% endfor %}
-      </ul>
-    </div>
+      <table class='table table-condensed'>
+        <tr>
+          <th>Topic</th>
+          <th><a href='{{ request.route_url('add_topic') }}'>Add Topic</a></th>
+        </tr>
+        {% for topic in topics %}
+        <tr>
+          <td><a href='{{ request.route_url('message_topic', name=topic.name) }}'>{{ topic.name }}</a></td>
+          <td> </td>
+        </tr>
+        {% endfor %}
+      </table>
 {% endblock %}

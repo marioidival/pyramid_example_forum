@@ -11,7 +11,7 @@ from pyramid_simpleform.renderers import FormRenderer
 @view_config(route_name='home', renderer='list.html')
 def index_page(request):
     """
-    Return All Topics for Change
+    Return All Topics for Chosen
     """
     topics = request.db['Topic'].find()
     return { 'topics' : topics }
@@ -29,3 +29,37 @@ def add_topic(request):
 
     return {'form' : FormRenderer(form)}
 
+@view_config(route_name='message_topic',
+        renderer='messages/list_messages.html')
+def index_messages(request, topic_id):
+    """
+    Return All Messages by Topic chosen
+    """
+    topic = topic_id.matchdict['name']
+    messages = request.db['Message'].find({'topic': topic})
+    return { 'messages' : messages, 'topic' : topic }
+
+@view_config(route_name='add_message', renderer='messages/add_messages.html')
+def add_message(topic_id, request):
+    form = Form(request,
+            schema=MessageSchema
+            )
+    topic = request.matchdict['name']
+
+    if form.validate():
+        title = form.data['title']
+        author = form.data['author']
+        content = form.data['content']
+        topic_oid = topic
+        d = {
+            'title' : title,
+            'author' : author,
+            'content':content,
+            'topic' : topic_oid
+        }
+        request.db['Message'].insert(d)
+        return HTTPFound(location='/topic/'+topic)
+    else:
+        print 'bigou'
+
+    return { 'form' : FormRenderer(form), 'topic' : topic }

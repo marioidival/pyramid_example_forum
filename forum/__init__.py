@@ -22,6 +22,8 @@ def main(global_config, **settings):
     config.add_static_view('static', 'forum:static')
     config.add_route('home', '/')
     config.add_route('add_topic', '/add_topic')
+    config.add_route('message_topic', '/topic/{name}')
+    config.add_route('add_message','/topic/messages/{name}')
     # MongoDB
 
     def add_mongo_db(event):
