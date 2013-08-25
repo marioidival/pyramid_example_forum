@@ -18,6 +18,12 @@ def index_page(request):
 
 @view_config(route_name='add_topic', renderer='topic/add_topic.html')
 def add_topic(request):
+    """
+    Add topics.
+    Here, exists the variable form, with receive
+    an schema TopicSchema, with have the fields
+    necessary for schema of Topic Document
+    """
     form = Form(request,
             schema=TopicSchema
             )
@@ -42,6 +48,9 @@ def index_messages(request, topic_id):
 
 @view_config(route_name='add_message', renderer='messages/add_messages.html')
 def add_message(request):
+    """
+    Add message receive an topic
+    """
     form = Form(request,
             schema=MessageSchema
             )
@@ -67,6 +76,9 @@ def add_message(request):
 
 @view_config(route_name='view_message', renderer='messages/view_message.html')
 def view_message(request, topic_msg):
+    '''
+    Method to display the message chosen by the User and also answers to this message
+    '''
     topic = topic_msg.matchdict['topic']
     title = topic_msg.matchdict['msg']
     msg = request.db['Message'].find({'topic': topic, 'slug':title})
@@ -76,6 +88,10 @@ def view_message(request, topic_msg):
 
 @view_config(route_name='response_message', renderer='messages/response.html')
 def response_msg(request):
+    '''
+    Add response for message
+    Receive an title of message for relationship
+    '''
     form = Form(request,
             schema=ResponseSchema
             )
@@ -95,4 +111,7 @@ def response_msg(request):
     return {'form' : FormRenderer(form), 'tpc' : tpc, 'title':title_msg }
 
 def make_slug(field):
+    '''
+    Method for create slug
+    '''
     return field.lower().replace(' ','-')
