@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    {{ form.begin(request.route_url('add_topic')) }}
+    <div>
+        {{ form.errorlist("name") }}
+        {{ form.label("name") }}
+        {{ form.text('name') }}
+    </div>
+    {{ form.submit("", "Add") }}
+    {{ form.end() }}
+
+{% endblock %}

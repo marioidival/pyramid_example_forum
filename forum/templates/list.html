@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% block content %}
+    <div class=''>
+      <ul>
+      {% for topic in topics %}
+        <li>{{ topic.name }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+{% endblock %}
