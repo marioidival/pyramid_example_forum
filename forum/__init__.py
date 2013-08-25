@@ -23,7 +23,9 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('add_topic', '/add_topic')
     config.add_route('message_topic', '/topic/{name}')
-    config.add_route('add_message','/topic/messages/{name}')
+    config.add_route('add_message','/topic/{name}/messages')
+    config.add_route('view_message', '/topic/{topic}/view/{msg}')
+    config.add_route('response_message', '/response/{msg}/{tpc}')
     # MongoDB
 
     def add_mongo_db(event):

@@ -7,7 +7,7 @@
         </tr>
         {% for topic in topics %}
         <tr>
-          <td><a href='{{ request.route_url('message_topic', name=topic.name) }}'>{{ topic.name }}</a></td>
+          <td><a href='{{ request.route_url('message_topic', name=topic.slug) }}'>{{ topic.name }}</a></td>
           <td> </td>
         </tr>
         {% endfor %}

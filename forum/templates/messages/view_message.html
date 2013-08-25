@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block content %}
+  {% for m in msg %}
+  <h3>{{ m.title }}</h3>
+  <blockquote>
+    {{ m.content }}
+  <small>{{ m.author }}</small>
+</blockquote>
+
+  {% endfor %}
+  <h4>Response this message</h4>
+  <a href="{{ request.route_url('response_message', msg=title, tpc=topic) }}" role="button" data-toggle="modal" class='btn btn-primary'>Response</a>
+{% for res in response %}
+  <hr />
+    <h3>{{ res.author }}</h3>
+  <blockquote>
+    {{ res.content }}
+</blockquote
+{% endfor %}
+{% endblock %}

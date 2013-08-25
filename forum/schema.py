@@ -21,4 +21,3 @@ class MessageSchema(Schema):
 class ResponseSchema(Schema):
     author = validators.String(not_empty=True)
     content = validators.String(not_empty=True)
-    message = validators.String(not_empty=True)

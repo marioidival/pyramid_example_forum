@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+{{ form.begin(request.route_url('response_message', msg=title, tpc=tpc)) }}
+    <div>
+        {{ form.errorlist("content") }}
+        {{ form.label("content") }}
+        {{ form.text('content') }}
+    </div>
+    <div>
+        {{ form.errorlist("author") }}
+        {{ form.label("author") }}
+        {{ form.text('author') }}
+    </div>
+    {{ form.submit("","Send Response") }}
+{{ form.end() }}
+{% endblock %}
