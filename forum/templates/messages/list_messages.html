@@ -2,14 +2,28 @@
 
 {% block content %}
 <h3>Messages of {{ topic|capitalize|replace('-',' ') }}</h3>
+ <a href='{{ request.route_url('home') }}' class='btn btn-info'>Topics</a>
  <a href='{{ request.route_url('add_message', name=topic) }}' class='btn'>Add
    Message</a>
+
  <hr />
- <ul>
+ <table class='table table-bordered'>
+   <tr class='alert alert-info'>
+     <th><h3>Title</h3></th>
+     <th></th>
+   </tr>
  {% for message in messages %}
- <li>{{ message.title }} - {{ message.author}} |
- <a href='{{ request.route_url('view_message',topic=topic, msg=message.slug) }}'>View</a>
-</li>
+   <tr>
+     <td>
+       <p class='lead'>{{ message.title }}</p>
+     </td>
+     <td>
+       <div class='text-center'>
+         <a href='{{ request.route_url('view_message',topic=topic,
+         msg=message.slug) }}' class=' btn'>View Messages</a>
+       </div>
+    </td>
+   </tr>
   {% endfor %}
- <ul>
+ </table>
 {% endblock %}

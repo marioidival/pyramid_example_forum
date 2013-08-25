@@ -1,7 +1,7 @@
 {% extends 'index.html' %}
 
 {% block content %}
-ADD MESSAGE
+
     {{ form.begin(request.route_url('add_message', name=topic)) }}
     <div>
         {{ form.errorlist("title") }}
@@ -16,8 +16,9 @@ ADD MESSAGE
     <div>
         {{ form.errorlist("content") }}
         {{ form.label("content") }}
-        {{ form.text('content') }}
+        {{ form.textarea('content') }}
     </div>
-    {{ form.submit("","Add message") }}
+    <button class='btn btn-primary'>Send Message</button>
+    <a href='{{ request.route_url('message_topic', name=topic) }}' class='btn'>Back Messages</a>
     {{ form.end() }}
 {% endblock %}

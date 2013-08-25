@@ -8,8 +8,10 @@
 </blockquote>
 
   {% endfor %}
-  <h4>Response this message</h4>
-  <a href="{{ request.route_url('response_message', msg=title, tpc=topic) }}" role="button" data-toggle="modal" class='btn btn-primary'>Response</a>
+  <a href="{{ request.route_url('response_message', msg=title, tpc=topic) }}"
+    role="button" data-toggle="modal" class='btn btn-primary'>Reply to this message</a>
+  <a href='{{ request.route_url('message_topic', name=topic) }}' class='btn'>Return for Topic</a>
+
 {% for res in response %}
   <hr />
     <h3>{{ res.author }}</h3>

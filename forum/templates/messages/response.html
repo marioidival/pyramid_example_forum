@@ -1,16 +1,18 @@
 {% extends 'index.html' %}
 {% block content %}
 {{ form.begin(request.route_url('response_message', msg=title, tpc=tpc)) }}
-    <div>
-        {{ form.errorlist("content") }}
-        {{ form.label("content") }}
-        {{ form.text('content') }}
-    </div>
-    <div>
+   <div>
         {{ form.errorlist("author") }}
         {{ form.label("author") }}
         {{ form.text('author') }}
     </div>
-    {{ form.submit("","Send Response") }}
+
+    <div>
+        {{ form.errorlist("content") }}
+        {{ form.label("content") }}
+        {{ form.textarea('content') }}
+    </div>
+      <button class='btn btn-primary'>Send Message</button>
+      <a href='{{ request.route_url('view_message', topic=tpc, msg=title) }}' class='btn'>Back Messages</a>
 {{ form.end() }}
 {% endblock %}

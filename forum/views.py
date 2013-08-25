@@ -91,10 +91,6 @@ def response_msg(request):
         }
         request.db['Response'].insert(d)
         return HTTPFound(location='/topic/'+tpc+'/view/'+title_msg)
-    else:
-        form = Form(request,
-            schema=ResponseSchema
-            )
 
     return {'form' : FormRenderer(form), 'tpc' : tpc, 'title':title_msg }
 

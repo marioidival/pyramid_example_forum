@@ -14,7 +14,7 @@ class TopicSchema(Schema):
     name = validators.String(not_empty=True, max=100)
 
 class MessageSchema(Schema):
-    title = validators.String(not_empty=True, max=100)
+    title = validators.String(not_empty=True, max=1)
     author = validators.String(not_empty=True)
     content = validators.String(not_empty=True)
 
