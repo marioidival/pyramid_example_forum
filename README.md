@@ -1,4 +1,4 @@
 pyramid_example_forum
 =====================
 
-Example with Pyramid 
+Example with Pyramid, MongoDB
